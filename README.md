@@ -126,7 +126,7 @@ function ol(e) {
 4. 启动Termius，登录账号，重启Termius
 
 5. ~~去除登录并解除限制（已失效）~~
-
+修改app\ui-process
 找到`Welcome Screen`
 修改如下
 ```js
