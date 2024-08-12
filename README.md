@@ -2,12 +2,14 @@
 
 ## 破解方法
 
-### write 2024.08.12
+> update 2024.08.12
 
+软件包更新历史- - -从9.2.0开始<br/>
+[点我跳转下载Termius](https://www.123pan.com/s/AbQdjv-hOxDv.html?) `提取码:c0Iy`
 
-首先安装nodejs并配置`npm`
+首先安装nodejs 并配置`npm`<br/>
 
-[nodejs下载地址：https://nodejs.cn/download](https://nodejs.cn/download) 
+[点我跳转下载nodejs](https://nodejs.cn/download) 
 
 安装`asar`
 ```shell
@@ -126,7 +128,7 @@ function ol(e) {
 4. 启动Termius，登录账号，重启Termius
 
 5. ~~去除登录并解除限制（已失效）~~
-修改app\ui-process
+
 找到`Welcome Screen`
 修改如下
 ```js
