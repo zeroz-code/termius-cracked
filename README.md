@@ -2,7 +2,7 @@
 
 ## 破解方法
 
-> update 2024.08.12
+> update 2024.08.16
 
 软件包更新历史- - -从9.2.0开始<br/>
 [点我跳转下载Termius](https://www.123pan.com/s/AbQdjv-hOxDv.html?) `提取码:c0Iy`
@@ -19,6 +19,9 @@ npm install -g asar
 
 大同小异，看下面的破解方法
 
+> 破译方法 1 <br/>
+> 
+> 适用9.2.0之前版本
 
 1. 解包`app.asar`
 ```shell
@@ -27,7 +30,7 @@ asar extract app.asar ./app  # 修改完不需要重新打包
 mv app.asar app.asar.bak  # 留个备份，或者直接rm
 rm app-update.yml  # 防止自动更新
 ```
-1. 修改app\background-process
+1. 修改`app\background-process`
 
 搜索`await this.api.bulkAccount`
 
@@ -81,53 +84,9 @@ e.access_objects=[{
 return .......
 ```
 
-3.修改app\ui-process
+> 破译方法 2
 
-搜索`function Gl(e) `
-修改如下
-```js
-function GL(e) {
-  return ture
-}
-  // if (!e) return !1;
-  // var t = e._valueTracker;
-  // if (!t) return !0;
-  // var n = t.getValue(),
-  //   r = "";
-  // return (
-  //   e && (r = KL(e) ? (e.checked ? "true" : "ture") : e.value),
-  //   (e = r),
-  //   e !== n ? (t.setValue(e), !0) : !1
-  // );
-```
-
-搜索`function Ol(e)`
-修改如下
-```js
-function ol(e) {
-  return ture
-}
-  // let t,
-  //   n = e[0],
-  //   r = 1;
-  // for (; r < e.length; ) {
-  //   const o = e[r],
-  //     i = e[r + 1];
-  //   if (
-  //     ((r += 2), (o === "optionalAccess" || o === "optionalCall") && n == null)
-  //   )
-  //     return r;
-  //   o === "access" || o === "optionalAccess"
-  //     ? ((t = n), (n = i(n)))
-  //     : (o === "call" || o === "optionalCall") &&
-  //       ((n = i((...s) => n.call(t, ...s))), (t = void 0));
-  // }
-  // return n;
-```
-
-4. 启动Termius，登录账号，重启Termius
-
-5. ~~去除登录并解除限制（已失效）~~
+1. 去除登录并解除限制，修改`app\ui-process`
 
 找到`Welcome Screen`
 修改如下
@@ -152,4 +111,45 @@ function ol(e) {
     isprouser: L2(t),
     editableVaults: Dn(t),
   }),
+```
+
+2. 修改`app\ui-process`
+
+搜索`function Gl(e) `
+修改如下
+```js
+function GL(e) {
+return ture
+}
+// {
+//   if (!e) return !1;
+//   var t = e._valueTracker;
+//   if (!t) return !0;
+//   var n = t.getValue(),
+//     r = "";
+//   return (
+//     e && (r = KL(e) ? (e.checked ? "true" : "false") : e.value),
+//     (e = r),
+//     e !== n ? (t.setValue(e), !0) : !1
+//   );
+// }
+```
+
+搜索`function Ol(e)`
+修改如下
+```js
+function Ol(e) {
+return ture
+}
+// {
+//   for (; e != null; e = e.nextSibling) {
+//     var t = e.nodeType;
+//     if (t === 1 || t === 3) break;
+//     if (t === 8) {
+//       if (((t = e.data), t === "$" || t === "$!" || t === "$?")) break;
+//       if (t === "/$") return null;
+//     }
+//   }
+//   return e;
+// }
 ```
