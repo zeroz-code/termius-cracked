@@ -4,7 +4,7 @@
 
 > update 2024.08.16
 
-软件包更新历史- - -从9.2.0开始<br/>
+软件包备份- - -从9.2.0开始<br>
 [点我跳转下载Termius](https://www.123pan.com/s/AbQdjv-hOxDv.html?) `提取码:c0Iy`
 
 首先安装nodejs 并配置`npm`<br/>
@@ -19,9 +19,9 @@ npm install -g asar
 
 大同小异，看下面的破解方法
 
-> 破译方法 1 <br/>
+> 破译方法 1 
 > 
-> 适用9.2.0之前版本
+> 适用 9.2.0 之前版本
 
 1. 解包`app.asar`
 ```shell
@@ -30,7 +30,7 @@ asar extract app.asar ./app  # 修改完不需要重新打包
 mv app.asar app.asar.bak  # 留个备份，或者直接rm
 rm app-update.yml  # 防止自动更新
 ```
-1. 修改`app\background-process`
+2. 修改`app\background-process`
 
 搜索`await this.api.bulkAccount`
 
@@ -85,8 +85,18 @@ return .......
 ```
 
 > 破译方法 2
+>
+> 适用 9.2.0 启始
 
-1. 去除登录并解除限制，修改`app\ui-process`
+1. 解包`app.asar`
+```shell
+cd /Applications/Termius.app/Contents/Resources/
+asar extract app.asar ./app  # 修改完不需要重新打包
+mv app.asar app.asar.bak  # 留个备份，或者直接rm
+rm app-update.yml  # 防止自动更新
+```
+
+2. 去除登录并解除限制,<br>修改`app\ui-process`
 
 找到`Welcome Screen`
 修改如下
@@ -113,7 +123,7 @@ return .......
   }),
 ```
 
-2. 修改`app\ui-process`
+3. 修改`app\ui-process`
 
 搜索`function Gl(e) `
 修改如下
