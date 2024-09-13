@@ -2,6 +2,16 @@
 
 ## 破解方法
 
+解包`app.asar`
+```shell
+cd /Applications/Termius.app/Contents/Resources/
+npm i -g @electron/asar #解包环境配置
+asar extract app.asar ./app  # 修改完不需要重新打包
+asar pack ./app app.asar #打包
+mv app.asar app.asar.bak  # 留个备份，或者直接rm
+rm app-update.yml  # 防止自动更新
+```
+
 > update 2024.08.16
 
 软件包备份- - -从9.2.0开始<br>
@@ -23,14 +33,7 @@ npm install -g asar
 > 
 > 适用 9.2.0 之前版本
 
-1. 解包`app.asar`
-```shell
-cd /Applications/Termius.app/Contents/Resources/
-asar extract app.asar ./app  # 修改完不需要重新打包
-mv app.asar app.asar.bak  # 留个备份，或者直接rm
-rm app-update.yml  # 防止自动更新
-```
-2. 修改`app\background-process`
+1. 修改`app\background-process`
 
 搜索`await this.api.bulkAccount`
 
@@ -96,7 +99,7 @@ mv app.asar app.asar.bak  # 留个备份，或者直接rm
 rm app-update.yml  # 防止自动更新
 ```
 
-2. 去除登录并解除限制,<br>修改`app\ui-process`
+1. 去除登录并解除限制<br>修改`app\ui-process`
 
 找到`Welcome Screen`
 修改如下
@@ -123,7 +126,7 @@ rm app-update.yml  # 防止自动更新
   }),
 ```
 
-3. 修改`app\ui-process`
+2. 修改`app\ui-process`
 
 搜索`function Gl(e) `
 修改如下
@@ -163,8 +166,8 @@ return ture
 //   return e;
 // }
 ```
-> 上述步骤3 最优解
-> 去除了账户登录和每次开屏欢迎
+上述步骤2 最优解<br>
+去除了账户登录和每次开屏欢迎<br>
 搜索`I already use Termius`
 修改如下
 ```js
