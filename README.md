@@ -163,3 +163,37 @@ return ture
 //   return e;
 // }
 ```
+> 上述步骤3 最优解
+> 去除了账户登录和每次开屏欢迎
+搜索`I already use Termius`
+修改如下
+```js
+   switch (e) {
+          case "firstIntroductionScreen":
+            // n("log-in");
+            // break;
+          case "secondIntroductionScreen":
+            l(Qo({ onPage: 1 })), n("firstIntroductionScreen");
+            break;
+          case "thirdIntroductionScreen":
+            l(Qo({ onPage: 2 })), n("secondIntroductionScreen");
+            break;
+        }
+      },
+      d = () => {
+        switch (e) {
+          case "firstIntroductionScreen":
+            l(Qo({ onPage: 2 })), n("secondIntroductionScreen");
+            break;
+          case "secondIntroductionScreen":
+            l(Qo({ onPage: 3 })), n("thirdIntroductionScreen");
+            break;
+          case "thirdIntroductionScreen":
+            // n("sign-up");
+            // break;
+          case "success":
+            r();
+            break;
+        }
+      },
+```
