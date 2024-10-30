@@ -20,10 +20,6 @@ rm app-update.yml  # 防止自动更新
 ```shell
 npm install -g asar
 ```
-### for Windows && Mac
-
-大同小异，看下面的破解方法
-
 ## 破译方法 1 
 - 适用 9.2.0 之前版本
 
