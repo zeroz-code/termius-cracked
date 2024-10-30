@@ -1,7 +1,5 @@
 # Termius-cracked
 
-## 破解方法
-
 解包`app.asar`
 ```shell
 cd /Applications/Termius.app/Contents/Resources/
@@ -13,9 +11,6 @@ rm app-update.yml  # 防止自动更新
 ```
 
 > update 2024.08.16
-
-软件包备份- - -从9.2.0开始<br>
-[点我跳转下载Termius](https://www.123pan.com/s/AbQdjv-hOxDv.html?) `提取码:c0Iy`
 
 首先安装nodejs 并配置`npm`<br/>
 
