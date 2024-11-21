@@ -1,32 +1,32 @@
 # Termius-cracked
 
-解包`app.asar`
+Unpacking `app.asar`
 ```shell
 cd /Applications/Termius.app/Contents/Resources/
-npm i -g @electron/asar #解包环境配置
-asar extract app.asar ./app  # 修改完不需要重新打包
-asar pack ./app app.asar #打包
-mv app.asar app.asar.bak  # 留个备份，或者直接rm
-rm app-update.yml  # 防止自动更新
+npm i -g @electron/asar #unpack environment configuration
+asar extract app.asar ./app #no need to repack after modification
+asar pack ./app app.asar #pack
+mv app.asar app.asar.bak #keep a backup, or rm directly
+rm app-update.yml #prevent automatic update
 ```
 
 > update 2024.08.16
 
-首先安装nodejs 并配置`npm`<br/>
+First install nodejs and configure `npm`<br/>
 
-[点我跳转下载nodejs](https://nodejs.cn/download) 
+[Click here to download nodejs](https://nodejs.cn/download)
 
-安装`asar`
+Install `asar`
 ```shell
 npm install -g asar
 ```
 
-## 破译方法 1 
-- 适用 9.2.0 之前版本
+## Decryption method 1
+- Applicable to versions before 9.2.0
 
-1. 修改`app\background-process`
+1. Modify `app\background-process`
 
-搜索`await this.api.bulkAccount`
+Search for `await this.api.bulkAccount`
 
 `const e=await this.api.bulkAccount();` -> `var e=await this.api.bulkAccount();`
 
@@ -78,21 +78,21 @@ e.access_objects=[{
 return .......
 ```
 
-## 破译方法 2
-- 适用 9.2.0 +
+## Decryption method 2
+- Applicable to 9.2.0 +
 
-1. 解包`app.asar`
+1. Unpacking `app.asar`
 ```shell
 cd /Applications/Termius.app/Contents/Resources/
-asar extract app.asar ./app  # 修改完不需要重新打包
-mv app.asar app.asar.bak  # 留个备份，或者直接rm
-rm app-update.yml  # 防止自动更新
+asar extract app.asar ./app # No need to repackage after modification
+mv app.asar app.asar.bak # Keep a backup, or just rm
+rm app-update.yml # Prevent automatic update
 ```
 
-1. 去除登录并解除限制<br>修改`app\ui-process`
+1. Remove login and remove restrictions<br>Revise `app\ui-process`
 
-找到`Welcome Screen`
-修改如下
+Find `Welcome Screen`
+Modify as follows
 ```js
   d1(() => {
         l(
@@ -104,8 +104,7 @@ rm app-update.yml  # 防止自动更新
       }),
 ```
 
-找到`isprouser:`
-修改如下
+Find `isprouser:` and modify it as follows
 
 ```js
  w7e = (t) => ({
@@ -116,10 +115,10 @@ rm app-update.yml  # 防止自动更新
   }),
 ```
 
-2. 修改`app\ui-process`
+2. Modify `app\ui-process`
 
-搜索`function Gl(e) `
-修改如下
+Search for `function Gl(e)` Modify as follows
+
 ```js
 function GL(e) {
 return ture
@@ -138,8 +137,7 @@ return ture
 // }
 ```
 
-搜索`function Ol(e)`
-修改如下
+Search for `function Ol(e)` Modify as follows
 ```js
 function Ol(e) {
 return ture
@@ -156,10 +154,10 @@ return ture
 //   return e;
 // }
 ```
-上述步骤2 最优解<br>
-去除了账户登录和每次开屏欢迎<br>
-搜索`I already use Termius`
-修改如下
+The best solution for step 2 above<br>
+Removed account login and welcome screen every time it opens<br>
+Search for `I already use Termius`
+Modify as follows
 ```js
    switch (e) {
           case "firstIntroductionScreen":
